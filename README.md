@@ -7,3 +7,5 @@ Data  Code
    : GUI Translator
    
    : GUI Wikiprdia
+
+   : GUI Vat for Thailand
