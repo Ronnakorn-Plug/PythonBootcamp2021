@@ -52,20 +52,67 @@ E3 = ttk.Entry(GUI, textvariable = Cal3, font=FONT1, width=40)
 E3.pack(pady=5)
 
 
+
+# -------- Radio เลือกประเภท VAT ---------
+
+F1 = Frame(GUI)
+F1.pack(pady=10)
+
+v_radio = StringVar()
+
+R1 = ttk.Radiobutton(F1,text='ราคาสินค้ารวม vat แล้ว',variable=v_radio,value='ic')
+R1.grid(row=0,column=0)
+
+R1.invoke() # เลือกเป็นค่าเรื่มต้น
+
+R2 = ttk.Radiobutton(F1,text='ราคาสินค้า + vat 7%',variable=v_radio,value='av')
+R2.grid(row=0,column=1)
+
+R3 = ttk.Radiobutton(F1,text='ราคาสินค้าไม่รวม vat',variable=v_radio,value='nic')
+R3.grid(row=0,column=2)
+
+
+
 # --------Button-----------
 def Calculator(event=None): # คำอธิบาย event=None ดู line 74
+    # print('RADIO: ',v_radio.get())
     C_C1 = Cal1.get()
     C_C2 = int(Cal2.get())
     C_C3 = int(Cal3.get())
     C_C4 = C_C2 * C_C3
-    C_C5 = int(C_C4 * 0.07)
-    textshow = 'สินค้า : {}\n'.format(C_C1) # \n คือการขึ้นบรรทัดใหม่ของข้อความ , 
-    textshow1 = 'ราคา : {:,.2f} บาท/ถุง\n'.format(C_C2) # :,.2f คือการใส่ ทศนิยม 2 ตำแหน่งและ ,
-    textshow2 = 'จำนวน : {:,.2f} ถุง\n'.format(C_C3)
-    textshow3 = 'ราคารวมสุทธิ : {:,.2f} บาท\n'.format(C_C4)
-    textshow4 = 'VAT(7%) : {:,.2f} บาท\n'.format(C_C5)
-    textshow5 = 'ราคาก่อน VAT(7%) : {:,.2f} บาท'.format(C_C4-C_C5)
-    r_result.set(textshow+textshow1+textshow2+textshow3+textshow4+textshow5)
+
+    if v_radio.get() == 'ic':
+        C_C5 = C_C4 * (7/107)
+        C_C6 = C_C4 * (100/107)
+        textshow = 'สินค้า : {}\n'.format(C_C1) # \n คือการขึ้นบรรทัดใหม่ของข้อความ , 
+        textshow1 = 'ราคา : {:,.2f} บาท/ชิ้น\n'.format(C_C2) # :,.2f คือการใส่ ทศนิยม 2 ตำแหน่งและ ,
+        textshow2 = 'จำนวน : {:,.2f} ชิ้น\n'.format(C_C3)
+        textshow3 = 'ราคารวมสุทธิ : {:,.2f} บาท\n'.format(C_C4)
+        textshow4 = 'VAT(7%) : {:,.2f} บาท\n'.format(C_C5)
+        textshow5 = 'ราคาก่อน VAT(7%) : {:,.2f} บาท'.format(C_C6)
+        r_result.set(textshow+textshow1+textshow2+textshow3+textshow4+textshow5)
+
+    elif v_radio.get() == 'av':
+        C_C5 = C_C4 * (0.07)
+        textshow = 'สินค้า : {}\n'.format(C_C1)
+        textshow1 = 'ราคา : {:,.2f} บาท/ชิ้น\n'.format(C_C2)
+        textshow2 = 'จำนวน : {:,.2f} ชิ้น\n'.format(C_C3)
+        textshow3 = 'ราคาก่อน VAT(7%) : {:,.2f} บาท\n'.format(C_C4)
+        textshow4 = 'VAT(7%) : {:,.2f} บาท\n'.format(C_C5)
+        textshow5 = 'ราคาสุทธิ VAT(7%) : {:,.2f} บาท'.format(C_C4+C_C5)
+        r_result.set(textshow+textshow1+textshow2+textshow3+textshow4+textshow5) 
+
+    else:
+        # C_C5 = C_C4 * (0.07)
+        textshow = 'สินค้า : {}\n'.format(C_C1)
+        textshow1 = 'ราคา : {:,.2f} บาท/ชิ้น\n'.format(C_C2)
+        textshow2 = 'จำนวน : {:,.2f} ชิ้น\n'.format(C_C3)
+        textshow3 = 'ราคาสุทธิ : {:,.2f} บาท\n'.format(C_C4)
+        # textshow4 = 'VAT(7%) : {:,.2f} บาท\n'.format(C_C5)
+        # textshow5 = 'ราคาสุทธิ VAT(7%) : {:,.2f} บาท'.format(C_C4+C_C5)
+        r_result.set(textshow+textshow1+textshow2+textshow3)     
+
+        
 
 
 B = ttk.Button(GUI,text='Calculator',command=Calculator)
@@ -81,6 +128,11 @@ LR.pack(pady=15)
 r_result = StringVar()
 R1 = ttk.Label(GUI,textvariable = r_result,font=FONT1, foreground='green')
 R1.pack()
+
+
+
+
+
 
 GUI.mainloop()
 
