@@ -9,3 +9,5 @@ Data  Code
    : GUI Wikiprdia
 
    : GUI Vat for Thailand
+   
+   : GUI basic = GUI Vocab 
