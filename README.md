@@ -13,4 +13,5 @@ Data  Code
    : GUI basic = GUI Vocab 
 
    : RPA = autoimagepost
+   
            readexcel - from data excel to web by bot
