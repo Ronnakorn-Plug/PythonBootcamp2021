@@ -14,4 +14,4 @@ Data  Code
 
    : RPA = autoimagepost
    
-           readexcel - from data excel to web by bot
+   : RPA = readexcel - from data excel to web by bot
