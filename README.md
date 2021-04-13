@@ -15,3 +15,5 @@ Data  Code
    : RPA = autoimagepost
    
    : RPA = readexcel - from data excel to web by bot
+   
+   : Webscraping(GUIstock) = Webscraping + GUI // Usrs Image stock.ico , Stockslogo.png
