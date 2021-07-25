@@ -17,3 +17,5 @@ Data  Code
    : RPA = readexcel - from data excel to web by bot
    
    : Webscraping(GUIstock) = Webscraping + GUI // Use Image stock.ico , Stockslogo.png
+   
+   : Create Static Web(HTMI) & Web Dev (Django)
